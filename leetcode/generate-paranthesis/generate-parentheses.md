@@ -105,3 +105,43 @@ Maybe I can do some optimizations like, if there are already balanced number of 
 Another optimization could be like - keep count of the `(` and `)` present in the current value and then don't add more if there's already max number of `(` or `)`. This will reduce creating a wrong value and then checking if that value is wrong and then marking it as a wrong value. Instead we will not even produce that value - hence no checks and of course as before no parsing or processing based on that wrong value going forward
 
 Doing those - we can reduce 12 wrong values from 33 values to be checked / processed, which puts us to 33 - 12 = 21 ! :D
+
+Now I'm writing tests. Now that I think about it, it can also be solved in a dynamic programming method I guess :O I gotta think about it!
+
+As I'm writing test for n = 1, next n = 2, I was thinking -
+
+n = 1, output = ()
+
+n = 2, output = ()(), (())
+
+n = 3, output = ()()(), ((())), (()()), (())(), ()(())
+
+
+For example, for n = 2, I can think like this - 
+
+Let's take n = 1, that's (), for n = 2, there's two sets / pairs of parenthesis. Assuming there's already one, that is n = 1, that is (), another pair can be put where? Either along side it, like this ()() or inside the parenthesis like this (()). Also, putting on the left or right doesn't matter when putting alongside, as both lead to the same result in this case! And that's the output for n = 2! I think that's the output - ()(), (()), as written above
+
+Let's take n = 3 now. Starting with n = 2, the output for n = 2 is ()() and (()). Now we have two sets / pairs of parenthesis already, we just need one more set / pair parenthesis. Where can this one more set go? Either along side the existing ones, or inside them! :) So,
+
+()() -> put one pair along side -> ()()() - here the side (left / right) doesn't matter!
+
+()() -> put one pair inside -> (())(), ()(()) - it can be inside any one of them!
+
+(()) -> put one pair along side -> (())(), ()(()) - here the side (left / right) matters! Note that the result is same as the above! :)
+
+(()) -> put one pair inside -> (()()), ((())) - note how inside meant along side for the inner parenthesis ? :D
+
+That's it, that way we get 5 values!! :D :D
+
+()()(), (())(), ()(()), (()()), ((()))
+
+Wow! :D :D
+
+Perfect eh? ;) Along side and inside concept. The only tricky thing is - I need to find a proper algorithm to understand how to put parenthesis along side and inside :P Lol
+
+Along side is easy I guess - append to the left or right
+
+Inside ain't so easy!! Especially when I have to look for multiple vacancies inside, hmm
+
+Something to note is - we can sometimes have same value coming up. I think using some sort of Set like structure would help while storing the results, instead of lists, so that all the elements are unique at the data storage level :) Or we will have to deduplication. I guess one way or the other that has to happen :) Ideally efficiently, so, using built-in functions or data structures doesn't mean everything is efficient 😅
+
