@@ -1,7 +1,16 @@
 const generateParenthesis = require('./generate-parenthesis')
 
-generateParenthesis(1) // expected output = ()
+describe('Generate Parenthesis', () => {
+    it('n = 1', () => {
+        expect(generateParenthesis(1)).toStrictEqual(["()"])
+    })
+    
 
-generateParenthesis(2) // expected output = ()(), (())
+    it('n = 2', () => {
+        generateParenthesis(2) // expected output = ()(), (())
+    })
 
-generateParenthesis(3) // expected output = ()()(), (())(), ()(()), (()()), ((()))
+    it('n = 3', () => {
+        generateParenthesis(3) // expected output = ()()(), (())(), ()(()), (()()), ((()))
+    })
+})

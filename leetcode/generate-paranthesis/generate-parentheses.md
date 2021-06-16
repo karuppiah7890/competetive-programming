@@ -145,3 +145,35 @@ Inside ain't so easy!! Especially when I have to look for multiple vacancies ins
 
 Something to note is - we can sometimes have same value coming up. I think using some sort of Set like structure would help while storing the results, instead of lists, so that all the elements are unique at the data storage level :) Or we will have to deduplication. I guess one way or the other that has to happen :) Ideally efficiently, so, using built-in functions or data structures doesn't mean everything is efficient 😅
 
+I'm using JavaScript for now and using `jest` for testing :D
+
+```bash
+$ npx jest
+ PASS  ./generate-parenthesis.spec.js
+  Generate Parenthesis
+    ✓ n = 1 (3 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        0.366 s, estimated 1 s
+Ran all test suites.
+```
+
+There's one proper test and two other dummy tests
+
+```bash
+$ npx jest
+ PASS  ./generate-parenthesis.spec.js
+  Generate Parenthesis
+    ✓ n = 1 (3 ms)
+    ✓ n = 2
+    ✓ n = 3
+
+Test Suites: 1 passed, 1 total
+Tests:       3 passed, 3 total
+Snapshots:   0 total
+Time:        0.439 s, estimated 1 s
+Ran all test suites.
+```
+
